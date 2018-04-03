@@ -1,11 +1,11 @@
 //
-//  PluginLibrary.mm
+//  NeuraPluginLibrary.mm
 //  TemplateApp
 //
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "PluginLibrary.h"
+#import "NeuraPluginLibrary.h"
 
 #include <CoronaRuntime.h>
 #import <UIKit/UIKit.h>
@@ -14,17 +14,17 @@
 
 // ----------------------------------------------------------------------------
 
-class PluginLibrary
+class NeuraPluginLibrary
 {
 	public:
-		typedef PluginLibrary Self;
+		typedef NeuraPluginLibrary Self;
 
 	public:
 		static const char kName[];
 		static const char kEvent[];
 
 	protected:
-		PluginLibrary();
+		NeuraPluginLibrary();
 
 	public:
 		bool Initialize( CoronaLuaRef listener );
@@ -57,18 +57,18 @@ class PluginLibrary
 // ----------------------------------------------------------------------------
 
 // This corresponds to the name of the library, e.g. [Lua] require "plugin.library"
-const char PluginLibrary::kName[] = "plugin.library";
+const char NeuraPluginLibrary::kName[] = "plugin.library";
 
 // This corresponds to the event name, e.g. [Lua] event.name
-const char PluginLibrary::kEvent[] = "pluginlibraryevent";
+const char NeuraPluginLibrary::kEvent[] = "NeuraPluginLibraryevent";
 
-PluginLibrary::PluginLibrary()
+NeuraPluginLibrary::NeuraPluginLibrary()
 :	fListener( NULL )
 {
 }
 
 bool
-PluginLibrary::Initialize( CoronaLuaRef listener )
+NeuraPluginLibrary::Initialize( CoronaLuaRef listener )
 {
 	// Can only initialize listener once
 	bool result = ( NULL == fListener );
@@ -82,7 +82,7 @@ PluginLibrary::Initialize( CoronaLuaRef listener )
 }
 
 int
-PluginLibrary::Open( lua_State *L )
+NeuraPluginLibrary::Open( lua_State *L )
 {
 	// Register __gc callback
 	const char kMetatableName[] = __FILE__; // Globally unique string to prevent collision
@@ -112,7 +112,7 @@ PluginLibrary::Open( lua_State *L )
 }
 
 int
-PluginLibrary::Finalizer( lua_State *L )
+NeuraPluginLibrary::Finalizer( lua_State *L )
 {
 	Self *library = (Self *)CoronaLuaToUserdata( L, 1 );
 
@@ -123,8 +123,8 @@ PluginLibrary::Finalizer( lua_State *L )
 	return 0;
 }
 
-PluginLibrary *
-PluginLibrary::ToLibrary( lua_State *L )
+NeuraPluginLibrary *
+NeuraPluginLibrary::ToLibrary( lua_State *L )
 {
 	// library is pushed as part of the closure
 	Self *library = (Self *)CoronaLuaToUserdata( L, lua_upvalueindex( 1 ) );
@@ -133,7 +133,7 @@ PluginLibrary::ToLibrary( lua_State *L )
 
 // [Lua] library.init( listener )
 int
-PluginLibrary::init( lua_State *L )
+NeuraPluginLibrary::init( lua_State *L )
 {
 	int listenerIndex = 1;
 
@@ -163,7 +163,7 @@ PluginLibrary::init( lua_State *L )
 
 // [Lua] library.show( word )
 int
-PluginLibrary::show( lua_State *L )
+NeuraPluginLibrary::show( lua_State *L )
 {
 	NSString *message = @"Error: Could not display UIReferenceLibraryViewController. This feature requires iOS 5 or later.";
 	
@@ -203,7 +203,7 @@ PluginLibrary::show( lua_State *L )
 }
 
 int
-PluginLibrary::authenticate( lua_State *L )
+NeuraPluginLibrary::authenticate( lua_State *L )
 {
     Self *library = ToLibrary( L );
     
@@ -234,7 +234,7 @@ PluginLibrary::authenticate( lua_State *L )
 }
 
 int
-PluginLibrary::simulateAnEvent( lua_State *L) {
+NeuraPluginLibrary::simulateAnEvent( lua_State *L) {
     char const *eventName = lua_tostring(L, 1);
     if (eventName == nil) return -1;
     
@@ -259,7 +259,7 @@ PluginLibrary::simulateAnEvent( lua_State *L) {
 }
 
 int
-PluginLibrary::subscribeToEvent(lua_State *L) {
+NeuraPluginLibrary::subscribeToEvent(lua_State *L) {
     char const *eventNameChar = lua_tostring(L, 1);
     char const *eventIdChar = lua_tostring(L, 2);
     
@@ -290,13 +290,13 @@ PluginLibrary::subscribeToEvent(lua_State *L) {
 }
 
 int
-PluginLibrary::isLoggedIn(lua_State *L) {
+NeuraPluginLibrary::isLoggedIn(lua_State *L) {
     lua_pushboolean(L, NeuraSDK.shared.isAuthenticated);
     return 1;
 }
 
 int
-PluginLibrary::logout(lua_State *L) {
+NeuraPluginLibrary::logout(lua_State *L) {
     if (!NeuraSDK.shared.isAuthenticated) return -1;
     
     [NeuraSDK.shared logoutWithCallback:^(NeuraLogoutResult * _Nonnull result) {
@@ -321,5 +321,5 @@ PluginLibrary::logout(lua_State *L) {
 
 CORONA_EXPORT int luaopen_plugin_library( lua_State *L )
 {
-	return PluginLibrary::Open( L );
+	return NeuraPluginLibrary::Open( L );
 }

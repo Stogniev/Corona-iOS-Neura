@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A4E253C9166D716900DCDC2C /* PluginLibrary.mm in Sources */ = {isa = PBXBuildFile; fileRef = A447B617165D734C009EA762 /* PluginLibrary.mm */; };
+		A4E253C9166D716900DCDC2C /* NeuraPluginLibrary.mm in Sources */ = {isa = PBXBuildFile; fileRef = A447B617165D734C009EA762 /* NeuraPluginLibrary.mm */; };
 		DADA9AF0206818690026A20B /* NeuraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADA9AEF206818690026A20B /* NeuraSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A447B616165D734C009EA762 /* PluginLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginLibrary.h; path = Plugin/PluginLibrary.h; sourceTree = "<group>"; };
-		A447B617165D734C009EA762 /* PluginLibrary.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PluginLibrary.mm; path = Plugin/PluginLibrary.mm; sourceTree = "<group>"; };
+		A447B616165D734C009EA762 /* NeuraPluginLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NeuraPluginLibrary.h; path = Plugin/NeuraPluginLibrary.h; sourceTree = "<group>"; };
+		A447B617165D734C009EA762 /* NeuraPluginLibrary.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NeuraPluginLibrary.mm; path = Plugin/NeuraPluginLibrary.mm; sourceTree = "<group>"; };
 		A4E253B6166D6FB300DCDC2C /* libplugin_library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libplugin_library.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADA9AEF206818690026A20B /* NeuraSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NeuraSDK.framework; path = ../../../../../../Users/z4/Desktop/NeuraSDK.framework; sourceTree = "<group>"; };
 		F572F81A1EE0705B001BC814 /* CoronaNative.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CoronaNative.xcconfig; sourceTree = "<group>"; };
@@ -46,8 +46,8 @@
 		A447B609165D72A6009EA762 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A447B616165D734C009EA762 /* PluginLibrary.h */,
-				A447B617165D734C009EA762 /* PluginLibrary.mm */,
+				A447B616165D734C009EA762 /* NeuraPluginLibrary.h */,
+				A447B617165D734C009EA762 /* NeuraPluginLibrary.mm */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4E253C9166D716900DCDC2C /* PluginLibrary.mm in Sources */,
+				A4E253C9166D716900DCDC2C /* NeuraPluginLibrary.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
